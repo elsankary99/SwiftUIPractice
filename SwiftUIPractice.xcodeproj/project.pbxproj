@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		79AAD850300170DB000228AB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 79AAD84F300170DB000228AB /* SDWebImageSwiftUI */; };
+		79AAD86430017DCC000228AB /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 79AAD86330017DCC000228AB /* SwiftfulUI */; };
+		79AAD86730017E0A000228AB /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 79AAD86630017E0A000228AB /* SwiftfulRouting */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		79AAD8403001707D000228AB /* SwiftUIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79AAD86430017DCC000228AB /* SwiftfulUI in Frameworks */,
+				79AAD86730017E0A000228AB /* SwiftfulRouting in Frameworks */,
+				79AAD850300170DB000228AB /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,9 @@
 			);
 			name = SwiftUIPractice;
 			packageProductDependencies = (
+				79AAD84F300170DB000228AB /* SDWebImageSwiftUI */,
+				79AAD86330017DCC000228AB /* SwiftfulUI */,
+				79AAD86630017E0A000228AB /* SwiftfulRouting */,
 			);
 			productName = SwiftUIPractice;
 			productReference = 79AAD8403001707D000228AB /* SwiftUIPractice.app */;
@@ -94,6 +106,11 @@
 			);
 			mainGroup = 79AAD8373001707D000228AB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				79AAD84E300170DB000228AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				79AAD86230017DCB000228AB /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				79AAD86530017E0A000228AB /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 79AAD8413001707D000228AB /* Products */;
 			projectDirPath = "";
@@ -332,6 +349,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79AAD84E300170DB000228AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.4;
+			};
+		};
+		79AAD86230017DCB000228AB /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.4;
+			};
+		};
+		79AAD86530017E0A000228AB /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79AAD84F300170DB000228AB /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79AAD84E300170DB000228AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		79AAD86330017DCC000228AB /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79AAD86230017DCB000228AB /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
+		};
+		79AAD86630017E0A000228AB /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79AAD86530017E0A000228AB /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 79AAD8383001707D000228AB /* Project object */;
 }
