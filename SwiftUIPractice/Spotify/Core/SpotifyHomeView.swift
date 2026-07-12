@@ -7,8 +7,11 @@
 
 import SwiftUI
 import SwiftfulUI
+import SwiftfulRouting
 
 struct SpotifyHomeView: View {
+    @Environment(\.router) private var router
+    
     @State private var currentUser: User? = nil
     @State private var selectedCategory: Category = .all
     @State private var products: [Product] = []
@@ -42,12 +45,15 @@ struct SpotifyHomeView: View {
                                         .fontWeight(.semibold)
                                     
                                     ScrollView (.horizontal) {
-                                        HStack {
+                                        HStack (alignment:.top){
                                             ForEach(row.products) { product in
                                                 SpotifyImageTitleCell(
                                                     imageName: product.firstImage,
                                                     title: product.title
                                                 )
+                                                .asButton(.press) {
+                                                    goToSpotifyPlayListView(product: product)
+                                                }
                                             }
                                         }
                                     }
@@ -75,8 +81,16 @@ struct SpotifyHomeView: View {
             await getData()
         }
     }
+    
+    private func goToSpotifyPlayListView(product: Product) {
+        guard let currentUser else {return}
+        router.showScreen(.push) { _ in
+            SpotifyPlayListView( product: product, user: currentUser)
+        }
+    }
 
     private func getData() async {
+        guard products.isEmpty else {return}
         do {
             currentUser = try await DatabaseHelper.getUserss().first
             products = try await DatabaseHelper.getProducts()
@@ -102,7 +116,10 @@ struct SpotifyHomeView: View {
 }
 
 #Preview {
-    SpotifyHomeView()
+    RouterView { _ in
+        SpotifyHomeView()
+    }
+   
 }
 
 extension SpotifyHomeView {
@@ -161,6 +178,9 @@ extension SpotifyHomeView {
                     imageName: product.firstImage,
                     title: product.title
                 )
+                .asButton(.press) {
+                    goToSpotifyPlayListView(product: product)
+                }
             }
         }
     }
@@ -173,7 +193,9 @@ extension SpotifyHomeView {
             title: product.title,
             subTitle: product.description,
             onAddToPlayListPressed: nil,
-            onPlayPressed: nil
+            onPlayPressed: {
+                goToSpotifyPlayListView(product: product)
+            }
         )
     }
 }

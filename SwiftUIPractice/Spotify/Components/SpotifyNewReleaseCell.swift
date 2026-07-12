@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct SpotifyNewReleaseCell: View {
     var imageName: String = Constants.randomImage
@@ -89,9 +90,7 @@ extension SpotifyNewReleaseCell {
                     Image(systemName: "play.circle.fill")
                         .foregroundStyle(.spotifyWhite)
                         .font(.title)
-                        .onTapGesture {
-                            onPlayPressed?()
-                        }
+                       
 
                 }
                 
@@ -99,8 +98,12 @@ extension SpotifyNewReleaseCell {
             }
             .font(.callout)
         }
+        
         .padding(.trailing, 10)
         .background(.spotifyDarkGray)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .asButton(.press, action: {
+                onPlayPressed?()
+        })
     }
 }
