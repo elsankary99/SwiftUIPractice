@@ -10,9 +10,12 @@ import SwiftfulUI
 
 struct BumbleCardView: View {
     var user: User = .mock
-    private var userInterested: [USerInterest] = User.mock.interests
-    private var userBasics: [USerInterest] = User.mock.basics
+    var userInterested: [USerInterest] = User.mock.interests
+    var userBasics: [USerInterest] = User.mock.basics
 
+    var onXmarkPressed: (()->Void)? = nil
+    var onCheckmarkPressed: (()->Void)? = nil
+    
     @State private var cardFrame: CGRect = .zero
     var body: some View {
         ScrollView {
@@ -167,7 +170,7 @@ extension BumbleCardView {
                     })
                     .frame(width: 60, height: 60)
                     .onTapGesture {
-
+                        onXmarkPressed?()
                     }
 
                 Spacer(minLength: 0)
@@ -181,7 +184,7 @@ extension BumbleCardView {
                     })
                     .frame(width: 60, height: 60)
                     .onTapGesture {
-
+                        onCheckmarkPressed?()
                     }
             }
             .padding(.vertical, 25)
