@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulUI
+import SwiftfulRouting
 
 struct BumbleHomeView: View {
     var sliderSections: [String] = ["Everyone", "Trending"]
@@ -16,12 +17,22 @@ struct BumbleHomeView: View {
     @State private var selectedIndex: Int = 1
     @State private var cardOffset: [Int: Bool] = [:]
     @State private var currentSwipeOffset: CGFloat = 0.0
+    
+    @Environment(\.router) private var router
 
     var body: some View {
         ZStack {
             Color.bumbleWhite.ignoresSafeArea()
             VStack {
-                BumbleHeaderSection()
+                BumbleHeaderSection(
+                    arrowUturnPressed:  {
+                        router.dismissScreen()
+                    },
+                    sliderHorizontalPressde:  {
+                    router.showScreen { _ in
+                        BumbleChatView()
+                    }
+                } )
                 BumbleSliderSection(
                     sliderSections: sliderSections,
                     selectedSection: $selectedSection
@@ -131,7 +142,7 @@ struct BumbleHomeView: View {
         )
         .withDragGesture(
             .horizontal,
-            minimumDistance: 10,
+            minimumDistance: 20,
             resets: true,
             //                                        animation: <#T##Animation#>,
             rotationMultiplier: 1.05,
@@ -153,5 +164,9 @@ struct BumbleHomeView: View {
 }
 
 #Preview {
-    BumbleHomeView()
+    RouterView(content: { _ in
+        BumbleHomeView()
+    })
+        
+     
 }
