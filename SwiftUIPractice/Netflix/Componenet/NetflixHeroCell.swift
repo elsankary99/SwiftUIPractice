@@ -31,13 +31,13 @@ struct NetflixHeroCell: View {
                             .kerning(3)
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.netflixLightGray)
+                            .foregroundStyle(.netflitWhite)
                     }
                 }
                 
-                Text(title)
+                Text(title.split(separator: " ").first ?? "")
                     .font(.system(size: 50,weight: .medium,design: .serif))
-                
+                    
                 HStack (spacing: 8) {
                     ForEach(categories, id: \.self) { item in
                          HStack{
@@ -62,27 +62,41 @@ struct NetflixHeroCell: View {
                     .background(.netflitWhite)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                     .asButton {
-                        
+                        onPlayPressed?()
                     }
                     HStack {
-                        Image(systemName: "play.fill")
+                        Image(systemName: "plus")
                         Text("My List")
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
-                    .foregroundStyle(.netflixDarkGray)
-                    .background(.netflitWhite)
+                    .foregroundStyle(.netflitWhite)
+                    .background(.netflixDarkGray )
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                     .asButton {
-                        
+                        onListPressed?()
                     }
                 }
                 .padding(24)
             }
+            .background(
+                LinearGradient(
+                    colors: [
+                        .netflitBlack.opacity(0),
+                        .netflitBlack.opacity(0.5),
+                        .netflitBlack.opacity(0.7),
+                        .netflitBlack.opacity(0.8),
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .foregroundStyle(.netflitWhite)
         .aspectRatio(0.8, contentMode: .fit)
+       
+        
     }
 }
 

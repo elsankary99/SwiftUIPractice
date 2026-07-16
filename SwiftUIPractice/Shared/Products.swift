@@ -23,6 +23,9 @@ struct Product: Codable, Identifiable {
     let images: [String]
     let thumbnail, category: String
     
+    let recentlyAdded:Bool = {
+        Int.random(in: 1...5) == 1
+    }()
     
     var firstImage:String {
         images.first ?? Constants.randomImage
