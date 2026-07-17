@@ -18,7 +18,7 @@ struct ContentView: View {
                 }
                 ForEach(userArray) { product in
                     Text(product.firstName)
-                }
+                 }
             } 
         }
         .padding()
