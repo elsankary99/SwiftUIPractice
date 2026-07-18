@@ -17,7 +17,7 @@ struct NetflixHomeView: View {
     @State private var currentUSer: User? = nil
     @State private var row: [ProductRow] = []
     
-    @State private var scrollviewOffset: CGFloat = 0
+    @State private var scrollviewOffset: CGFloat = 0 
 
     var body: some View {
         ZStack(alignment: .top) {
