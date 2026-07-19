@@ -11,7 +11,7 @@ struct NetflixMainCard: View {
     var body: some View {
        
         ZStack {
-            Color.netflixDarkGray
+            Color.netflixDarkGray 
         }
     }
 }
